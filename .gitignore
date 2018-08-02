@@ -1,0 +1,5 @@
+*.settings
+*.project
+*.classpath
+*target/
+*bin/Pilotbrief.ENT.app/

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="exampleSuite1" duration-ms="87385" started-at="2018-08-01T13:32:24Z" finished-at="2018-08-01T13:33:51Z">
+    <groups>
+    </groups>
+    <test name="loginTest" duration-ms="87385" started-at="2018-08-01T13:32:24Z" finished-at="2018-08-01T13:33:51Z">
+      <class name="tests.LoginTest">
+        <test-method status="PASS" signature="Setup()[pri:0, instance:tests.LoginTest@5fcd892a]" name="Setup" is-config="true" duration-ms="54830" started-at="2018-08-01T13:32:24Z" finished-at="2018-08-01T13:33:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Setup -->
+        <test-method status="PASS" signature="Login(java.lang.String, java.lang.String)[pri:0, instance:tests.LoginTest@5fcd892a]" name="Login" duration-ms="31339" started-at="2018-08-01T13:33:20Z" data-provider="provideCredentials" finished-at="2018-08-01T13:33:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ioptima_na@wsi.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[weather]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+      </class> <!-- tests.LoginTest -->
+    </test> <!-- loginTest -->
+  </suite> <!-- exampleSuite1 -->
+</testng-results>
