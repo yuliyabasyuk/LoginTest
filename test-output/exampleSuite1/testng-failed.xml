@@ -9,6 +9,12 @@
           <include name="Setup"/>
         </methods>
       </class> <!-- tests.LoginTest -->
+      <class name="tests.SignoutTest">
+        <methods>
+          <include name="Setup"/>
+          <include name="goToPreferences"/>
+        </methods>
+      </class> <!-- tests.SignoutTest -->
     </classes>
   </test> <!-- loginTest(failed) -->
 </suite> <!-- Failed suite [exampleSuite1] -->

@@ -2,8 +2,9 @@
 <suite name="exampleSuite1" verbose="1">
 	<test name="loginTest">
 		<classes>
+			<class name="tests.BaseTest"/>
 			<class name="tests.LoginTest"/>
-			
+			<class name="tests.SignoutTest"/>			
 		</classes>
 	</test>
 </suite>

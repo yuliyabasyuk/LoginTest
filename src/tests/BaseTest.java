@@ -1,21 +1,26 @@
 package tests;
 
 import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 
 import io.appium.java_client.ios.IOSDriver;
+import org.testng.annotations.Test;
+
 
 public class BaseTest {
 	public IOSDriver<?> ios;
 	public WebDriverWait wait;
 	public String appPath;
 	public String bundleId;
+	
 
 	// InstallApp
 	public void installApp(IOSDriver<?> driver, String appPath) {
@@ -46,9 +51,12 @@ public class BaseTest {
 
 		// capabilities.setCapability("noResetValue","false");
 		ios = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		ios.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		wait = new WebDriverWait(ios, 10);
 		appPath = "/Users/ybasi/Apps/Pilotbrief.ENT.app";
 		bundleId = "com.wsi.Pilotbrief.Debug.ENT";
+		
+		
 
 		System.out.println("DEBUG SESSION ID: " + ios.getSessionId());
 

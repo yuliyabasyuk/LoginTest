@@ -1,68 +1,63 @@
 package tests;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+import org.apache.poi.xssf.usermodel.XSSFCell;
+//import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
 	private static XSSFSheet ExcelWSheet;
-	 
+
 	private static XSSFWorkbook ExcelWBook;
 
 	private static XSSFCell Cell;
 
-	private static XSSFRow Row;
+	//private static XSSFRow Row;
 
-public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception {   
+	public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception {
 
-   String[][] tabArray = null;
+		String[][] tabArray = null;
 
-   try {
+		try {
 
-	   FileInputStream ExcelFile = new FileInputStream(FilePath);
+			FileInputStream ExcelFile = new FileInputStream(FilePath);
 
-	   // Access the required test data sheet
+			// Access the required test data sheet
 
-	   ExcelWBook = new XSSFWorkbook(ExcelFile);
+			ExcelWBook = new XSSFWorkbook(ExcelFile);
 
-	   ExcelWSheet = ExcelWBook.getSheet(SheetName);
+			ExcelWSheet = ExcelWBook.getSheet(SheetName);
 
-	   int startRow = 1;
+			int startRow = 1;
 
-	   int startCol = 1;
+			int startCol = 1;
 
-	   int ci,cj;
+			int ci, cj;
 
-	   int totalRows = ExcelWSheet.getLastRowNum();
+			int totalRows = ExcelWSheet.getLastRowNum();
 
-	   // you can write a function as well to get Column count
+			// you can write a function as well to get Column count
 
-	   int totalCols = 2;
+			int totalCols = 2;
 
-	   tabArray=new String[totalRows][totalCols];
+			tabArray = new String[totalRows][totalCols];
 
-	   ci=0;
+			ci = 0;
 
-	   for (int i=startRow;i<=totalRows;i++, ci++) {           	   
+			for (int i = startRow; i <= totalRows; i++, ci++) {
 
-		  cj=0;
+				cj = 0;
 
-		   for (int j=startCol;j<=totalCols;j++, cj++){
+				for (int j = startCol; j <= totalCols; j++, cj++) {
 
-			   tabArray[ci][cj]=getCellData(i,j);
+					tabArray[ci][cj] = getCellData(i, j);
 
-			   System.out.println(tabArray[ci][cj]);  
+					System.out.println(tabArray[ci][cj]);
 
 				}
 
@@ -70,55 +65,53 @@ public static Object[][] getTableArray(String FilePath, String SheetName) throws
 
 		}
 
-	catch (FileNotFoundException e){
+		catch (FileNotFoundException e) {
 
-		System.out.println("Could not read the Excel sheet");
+			System.out.println("Could not read the Excel sheet");
 
-		e.printStackTrace();
-
-		}
-
-	catch (IOException e){
-
-		System.out.println("Could not read the Excel sheet");
-
-		e.printStackTrace();
+			e.printStackTrace();
 
 		}
 
-	return(tabArray);
+		catch (IOException e) {
+
+			System.out.println("Could not read the Excel sheet");
+
+			e.printStackTrace();
+
+		}
+
+		return (tabArray);
 
 	}
 
-public static String getCellData(int RowNum, int ColNum) throws Exception {
+	public static String getCellData(int RowNum, int ColNum) throws Exception {
 
-	try{
+		try {
 
-		Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
+			Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
 
-		int dataType = Cell.getCellType();
+			int dataType = Cell.getCellType();
 
-		if  (dataType == 3) {
+			if (dataType == 3) {
 
-			return "";
+				return "";
 
-		}else{
+			} else {
 
-			String CellData = Cell.getStringCellValue();
+				String CellData = Cell.getStringCellValue();
 
-			return CellData;
+				return CellData;
 
-		}
-	}catch (Exception e){
+			}
+		} catch (Exception e) {
 
-		System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 
-		throw (e);
+			throw (e);
 
 		}
 
 	}
 
 }
-
-
